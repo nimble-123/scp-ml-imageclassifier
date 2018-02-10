@@ -3,15 +3,17 @@ Demo application to show SCP ML Image Classifier service
 
 ## How to use this demo
 
-[Sign up for a free trial account on the SAP Cloud Platform](https://account.hanatrial.ondemand.com/#/home/welcome)
+[Sign up for a free trial account on the SAP Cloud Platform.](https://account.hanatrial.ondemand.com/#/home/welcome)
 
-Get your API key from [SAP API Business Hub](https://api.sap.com/shell/discover/contentpackage/SAPLeonardoMLFunctionalServices/api/image_classification_api)
+Get your API key from [SAP API Business Hub](https://api.sap.com/shell/discover/contentpackage/SAPLeonardoMLFunctionalServices/api/image_classification_api).
 
-Clone this repo into your WebIDE
+Download a copy of `[sapui5ml-api.destination](sapui5ml-api.destination)` and import the destination to your [SCP Cockpit](https://account.hanatrial.ondemand.com/cockpit).
 
-Insert your API key into `scp_ml_api.json` in folder `webapp/model/`.
+Clone this repo into your WebIDE.
 
-Run `index.html` from within WebIDE.
+Insert your API key into `[scp_ml_api.json](webapp/model/scp_ml_api.json)` in folder `webapp/model/`.
+
+Run `index.html` from within WebIDE. Make sure that when running the application, the URL is `index.html` and not the `extended_runnable_file.html`. And if not replace `extended_runnable_file.html` by `index.html`.
 
 Click the "Upload Picture" button at the bottom of the screen.
 
