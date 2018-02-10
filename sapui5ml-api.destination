@@ -1,0 +1,9 @@
+#
+#Sat Feb 10 14:31:47 UTC 2018
+Name=sapui5ml-api
+URL=https\://sandbox.api.sap.com/ml
+ProxyType=Internet
+Type=HTTP
+WebIDEEnabled=true
+Authentication=NoAuthentication
+Description=SAP Leonardo Machine Learning APIs
