@@ -60,6 +60,11 @@
 				"settings": {
 					"bundleName": "io.nlsltz.scp-ml-imageclassifier.i18n.i18n"
 				}
+			},
+			"scp_ml_api": {
+				"type": "sap.ui.model.json.JSONModel",
+				"preload": true,
+				"uri": "model/scp_ml_api.json"
 			}
 		},
 		"resources": {
