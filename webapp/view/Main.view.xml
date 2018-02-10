@@ -1,9 +1,59 @@
 <mvc:View controllerName="io.nlsltz.scp-ml-imageclassifier.controller.Main" xmlns:html="http://www.w3.org/1999/xhtml"
-	xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+	xmlns:mvc="sap.ui.core.mvc" xmlns:table="sap.ui.table" xmlns:unified="sap.ui.unified"
+	xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" displayBlock="true" xmlns="sap.m">
 	<App id="idAppControl">
 		<pages>
 			<Page title="{i18n>title}">
-				<content></content>
+				<content>
+					<Carousel pages="{scp_ml_api>/result-imageclassifier}" width="100%" visible="{= typeof ${scp_ml_api>/resultVisible-imageclassifier} !== 'undefined'}">
+						<pages>
+							<VBox width="100%" direction="Column" alignItems="Center">
+								<Image tooltip="canvas" class="sapUiLargeMargin" src="{scp_ml_api>fileURL}"/>
+								<Label text="File name: {scp_ml_api>name}" class="sapUiLargeMargin"></Label>
+								<table:Table rows="{scp_ml_api>results}" enableBusyIndicator="true" selectionMode="Single" visibleRowCount="5">
+									<table:columns>
+										<table:Column sortProperty="label" filterProperty="label">
+											<Label text="Label"/>
+											<table:template>
+												<Link text="{scp_ml_api>label}" href="https://www.google.com/search?q={scp_ml_api>label}&amp;newwindow=1&amp;tbm=isch" target="search"/>
+											</table:template>
+										</table:Column>
+										<table:Column sortProperty="score" filterProperty="score">
+											<Label text="Score"/>
+											<table:template>
+												<Text text="{scp_ml_api>score}"/>
+											</table:template>
+										</table:Column>
+									</table:columns>
+								</table:Table>
+							</VBox>
+						</pages>
+					</Carousel>
+				</content>
+				<footer>
+					<Toolbar width="100%">
+						<content>
+							<unified:FileUploader buttonOnly="true" buttonText="Upload Picture" sameFilenameAllowed="true" multiple="false"
+								fileType="zip,png,jpeg,jpg,bmp,tiff,tif"
+								mimeType="application/x-zip-compressed,application/zip,application/octet-stream,image/png,image/jpg,image/jpeg,image/bmp,image/tiff"
+								typeMissmatch="fileTypeMissmatch" change="fileUploadChange" uploadStart="fileUploadStart" uploadComplete="fileUploadComplete" name="files"
+								uploadUrl="{scp_ml_api>/url}" useMultipart="true" sendXHR="true" uploadOnChange="true">
+								<unified:headerParameters>
+									<unified:FileUploaderParameter name="APIKey" value="{scp_ml_api>/APIKey}"/>
+									<unified:FileUploaderParameter name="Accept" value="application/json"/>
+								</unified:headerParameters>
+							</unified:FileUploader>
+							<unified:FileUploader buttonOnly="true" buttonText="Upload Picture with Ajax" sameFilenameAllowed="true" multiple="true"
+								fileType="zip,png,jpeg,jpg,bmp,tiff,tif"
+								mimeType="application/x-zip-compressed,application/zip,application/octet-stream,image/png,image/jpg,image/jpeg,image/bmp,image/tiff"
+								typeMissmatch="fileTypeMissmatch" change="onPressImageClassifier" custom:mode="ajax"></unified:FileUploader>
+							<unified:FileUploader buttonOnly="true" buttonText="Upload Picture with XHR" sameFilenameAllowed="true" multiple="true"
+								fileType="zip,png,jpeg,jpg,bmp,tiff,tif"
+								mimeType="application/x-zip-compressed,application/zip,application/octet-stream,image/png,image/jpg,image/jpeg,image/bmp,image/tiff"
+								typeMissmatch="fileTypeMissmatch" change="onPressImageClassifier" custom:mode="xhr"></unified:FileUploader>
+						</content>
+					</Toolbar>
+				</footer>
 			</Page>
 		</pages>
 	</App>
