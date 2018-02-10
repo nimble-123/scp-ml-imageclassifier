@@ -1,8 +1,13 @@
+/* global URL:true */
+/* global window:true */
+/* global XMLHttpRequest:true */
 sap.ui.define([
 	"sap/ui/core/mvc/Controller",
 	"sap/m/MessageToast"
 ], function(Controller, MessageToast) {
 	"use strict";
+	
+	var defaultFileSrcUrl = "/resources/sap/ui/documentation/sdk/images/logo_ui5.png";
 
 	return Controller.extend("io.nlsltz.scp-ml-imageclassifier.controller.Main", {
 		fileTypeMissmatch: function(oControlEvent) {
